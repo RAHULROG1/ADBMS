@@ -1,0 +1,22 @@
+declare 
+a number;
+b number;
+c number;
+begin
+a:=&num1;
+b:=&num2;
+c:=a+b;
+dbms_output.put_line('Sum of '||a||' and '||b||' is '||c);
+end;
+/
+
+---------------------------------------------------------------------------------------------------
+Output
+
+Enter value for num1: 5
+old   6:      a:=&num1;
+new   6:      a:=10;
+Enter value for num2: 10
+old   7:      b:=&num2;
+new   7:      b:=20;
+sum of 5 and 10 is 15

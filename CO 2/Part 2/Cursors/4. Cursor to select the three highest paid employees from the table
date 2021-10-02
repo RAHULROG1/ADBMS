@@ -1,0 +1,49 @@
+desc works;
+
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL CHAR(8)
+ COMPANY_NAME                              NOT NULL VARCHAR2(18)
+ SALARY                                             FLOAT(126)
+
+
+select * from works;
+
+EMP_ID   COMPANY_NAME           SALARY
+-------- ------------------ ----------
+E-101    SBI                     71000
+E-102    SBI                    108900
+E-103    SBT                     40000
+E-104    Federal                 37000
+
+declare
+i number:=0;
+cursor cur is select emp_id,company_name,salary from works order by salary desc;
+r cur%rowtype;
+begin
+open cur;
+loop
+exit when i=3;
+fetch cur into r;
+dbms_output.put_line(r.emp_id||' '||r.company_name||' '||r.salary);
+i:=i+1;
+end loop;
+close cur;
+end;
+/
+
+
+E-102    SBI 108900
+E-101    SBI 71000
+E-103    SBT 40000
+
+
+
+select emp_id,company_name,salary from works order by salary desc;
+
+EMP_ID   COMPANY_NAME           SALARY
+-------- ------------------ ----------
+E-102    SBI                    108900
+E-101    SBI                     71000
+E-103    SBT                     40000
+E-104    Federal                 37000
